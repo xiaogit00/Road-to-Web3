@@ -1,6 +1,6 @@
 html, body {
   margin: 0;
-  padding: 0;
+  padding: 0; 
   height: 100%;
   width: 100%;
 }
@@ -14,7 +14,7 @@ input#search {
   outline: none;
   /* padding: 10px 20px; */
   /* text-align: left; */
-  box-shadow: 0 0 0 2px #000000;
+  /* box-shadow: 0 0 0 2px #000000; */
   /* border-radius: 5px; */
   /* position: fixed; */
   /* left: 50%; */
@@ -43,7 +43,7 @@ input#search.dropdown {
   appearance: none;
   outline: none;
   font-size: 20px;
-  padding: 10px 20px;
+  padding: 10px 20px; 
   cursor: pointer;
   border: none;
   display: block;
@@ -59,3 +59,33 @@ input#search.dropdown {
 #selector button:hover {
   background-color: #f2f2f2;
 }
+
+/* horizontal slider */
+#cardRow{
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#carouselCard {
+  /*float: left;*/
+  max-width: 33.333%;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 0;
+  flex-basis: 33.333%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* .x-card > img {
+  margin-bottom: .75rem;
+  width: 100%;
+} */
+
+/* .card-text {
+  font-size: 85%;
+} */
