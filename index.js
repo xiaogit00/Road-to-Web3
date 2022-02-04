@@ -6,6 +6,7 @@ const port = 8080;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./routes/main")(app);
+app.use('/static', express.static('./static/'));
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
