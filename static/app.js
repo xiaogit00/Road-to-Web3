@@ -11,11 +11,11 @@ console.log("hello from within app.js")
 // Create input element - via the input tag name
 // let search = document.createElement("input");
 
-let search = document.getElementsByTagName("input");
+let search = document.getElementById("searchNFT");
 // window.search = search; // Put the element in window so we can access it easily later
 // search.id = "search"; // This is for the CSS
 search.autocomplete = "off"; // Disable browser autocomplete
-search[0].setAttribute("onkeyup","searchDB(this);");
+search.setAttribute("onkeyup","searchDB(this);");
 // window.onload = function() {
 // 	document.body.appendChild(search);
 // }
@@ -114,9 +114,9 @@ function searchDB(elem) {
 // Function to insert the selected item back to the input element
 function insertValue(elem) {
 	console.log("hello from within insertValue function")
-	window.search.classList.remove("dropdown");
-	window.search.value = elem.innerHTML;
-	window.search.name = elem.id;
-	console.log("contract address selected is:", window.search.name)
+	window.searchNFT.classList.remove("dropdown"); //this targets the element with 'search' as id.
+	window.searchNFT.value = elem.innerHTML;
+	window.searchNFT.name = elem.id;
+	// console.log("contract address selected is:", window.search.name)
 	elem.parentNode.parentNode.removeChild(elem.parentNode);
 }
