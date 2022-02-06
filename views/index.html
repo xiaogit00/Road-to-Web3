@@ -19,7 +19,7 @@
                 <b class="h3 text-info">Whose NFTs?</b>
             </header>
 
-            <form class="d-inline-flex">
+            <form class="d-inline-flex" id="form">
                 <!-- search input -->
                 <div class="col-md-4 ps-3">
                     <input type="text"
@@ -28,7 +28,6 @@
                             placeholder="Search NFTs By Name"
                             style="box-shadow: none;"
                             name="nftAddress"
-                            value=""
                     >
                 </div>
                 <!-- token id input -->
@@ -43,11 +42,9 @@
                 <div class="col-md-3 me-3">
                     <select class="form-select form-select-lg" aria-label="Default select example" style="box-shadow: none;">
                         <option selected>Select a chain</option>
-                        <option value="1">Polygon</option>
-                        <option value="2">Ethereum</option>
-                        <option value="3">Avalanche</option>
-                        <option value="3">Binance Smart Chain</option>
-                        <option value="3">Moonriver</option>
+                        <option value="137">Polygon</option>
+                        <option value="1">Ethereum</option>
+                        <option value="43114">Avalanche</option>
                     </select>
                 </div>
                 <!-- search button -->
@@ -59,24 +56,24 @@
     </nav>
 
     <!-- display section -->
-    <main class="card x-1 py-5 mx-auto" style="max-width: 50rem;">
+    <main class="card x-1 py-5 mx-auto" style="max-width: 50rem;" id="fetchedNFT">
         <div class="row g-0">
             <div class="col-sm-7">
-                <img src="/static/placeholder.png" class="card-img-top h-100" alt="selectedNft">
+                <img src="" class="card-img-top h-100" alt="selectedNft" id="fetchedNFTImage">
             </div>
             <div class="col-sm-5">
                 <div class="card-body">
                     <div class="card-body">
                         <h5 class="card-subtitle mb-2 text-muted">Token ID:</h5>
-                        <p class="card-text fs-5 fw-bold mb-4">7855</p>
+                        <p class="card-text fs-5 fw-bold mb-4" id="fetchedTokenID"></p>
                         <h5 class="card-subtitle mb-2 text-muted">Owned by:</h5>
-                        <p class="card-text fs-5 fw-bold mb-4">BoredApeYatchClub</p>
+                        <p class="card-text fs-5 fw-bold mb-4" id="fetchedOwnedBy"></p>
                         <h5 class="card-subtitle mb-2 text-muted">No of Times Transacted:</h5>
-                        <p class="card-text fs-5 fw-bold mb-4">4</p>
+                        <p class="card-text fs-5 fw-bold mb-4">???</p>
                         <h5 class="card-subtitle mb-2 text-muted">Last Price:</h5>
-                        <p class="card-text fs-5 fw-bold mb-4">2.73 ETH</p>
-                        <h5 class="card-subtitle mb-2 text-muted">Exchange:</h5>
-                        <p class="card-text fs-5 fw-bold">OpenSea</p>
+                        <p class="card-text fs-5 fw-bold mb-4">???</p>
+                        <h5 class="card-subtitle mb-2 text-muted">Original Owner</h5>
+                        <p class="card-text fs-5 fw-bold mb-4" id="fetchedOriginalOwner"></p>
                     </div>
                 </div>
             </div>
@@ -84,7 +81,7 @@
     </main>
 
     <!-- carousell -->
-    <div class="container pt-5 pb-5">
+    <div class="container pt-5 pb-5" id="fetchedAdditionalNFT">
         <div class="row">
             <div class="col-6">
                 <h4 class="mb-3">More From the Owner's Collections </h4>
@@ -116,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+    </div>
 
     <!-- scripts -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
