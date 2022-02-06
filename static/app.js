@@ -30,7 +30,79 @@ getNFTData()
 const form = document.getElementById('form')
 form.onsubmit = submit;
 
+function submit(event) {
+	event.preventDefault();
+	const contractAddress = event.target[0].name
+	const tokenID = event.target[1].value
+	const chainID = event.target[2].value
+	console.log(event.target[0].name) // this returns contractID
+	console.log(event.target[1].value) // this returns tokenID
+	console.log(event.target[2].value) //this returns chainID
 
+	getNFTMetaData(contractAddress, tokenID, chainID)
+		.then(res => {
+			document.getElementById('fetchedNFTImage').src = res.data.items[0].nft_data[0].external_data.image_512
+			document.getElementById('fetchedTokenID').innerHTML = tokenID
+			const nftOwnerAddress = res.data.items[0].nft_data[0].owner
+			document.getElementById('fetchedOwnedBy').innerHTML = nftOwnerAddress
+			document.getElementById('fetchedOriginalOwner').innerHTML = res.data.items[0].nft_data[0].original_owner
+			fetchedNFT.style.display = 'block'
+			console.log(res.data)
+			return nftOwnerAddress
+			//Gets additional NFT info of owner
+		})
+		.then(nftOwnerAddress => {
+			getAdditionalNFTs(nftOwnerAddress, chainID)
+				.then(res => {
+					const nftItems = res.data.items.filter(x => x.type === 'nft')
+					fetchedAdditionalNFT.style.display = 'block'
+					console.log("nftItems", nftItems)
+
+
+					//MASSIVE CREATING ELEMENTS
+					let cardRow = document.getElementById('cardRow')
+
+					//APPENDING THEM TO RIGHT PLACES
+					nftItems.map(nftItem => {
+						//creating cards
+						let card = document.createElement('div')
+						card.id = 'carouselCard'
+						card.className = 'card'
+						card.style='width: 18rem;'
+						cardRow.appendChild(card)
+						//creating images
+						let nftImage = document.createElement('img')
+						nftImage.className = 'img-fluid'
+						card.appendChild(nftImage)
+
+						//creating card bodies
+						let cardBody = document.createElement('div')
+						cardBody.className = 'card-body'
+						card.appendChild(cardBody)
+
+						//creating card titles
+						let cardTitle = document.createElement('h6')
+						cardTitle.className = 'card-title'
+
+						cardBody.appendChild(cardTitle)
+
+						if (nftItem.nft_data !== null) {
+							const imageURL = nftItem.nft_data[0].external_data.image_256
+							const additionalTokenID = nftItem.nft_data[0].token_id
+							nftImage.src = imageURL
+							cardTitle.innerHTML = `Token ID: ${additionalTokenID}`
+						} else {
+							const additionalContractAdd = nftItem.contract_address
+							nftImage.src = 'https://res.cloudinary.com/dl4murstw/image/upload/v1644159274/1-4.82fccdcc_bgynqu.svg'
+							cardTitle.innerHTML = nftItem.contract_name
+						}
+					})
+
+				})
+				.catch(err => console.log(err))
+		})
+		.catch(err => console.log(err))
+}
 
 //**********************************************
 //*             Function Definitions
@@ -55,32 +127,20 @@ async function getNFTData() {
 }
 
 
-
-function submit(event) {
-	event.preventDefault();
-	const contractAddress = event.target[0].name
-	const tokenID = event.target[1].value
-	const chainID = event.target[2].value
-	console.log(event.target[0].name) // this returns contractID
-	console.log(event.target[1].value) // this returns tokenID
-	console.log(event.target[2].value) //this returns chainID
-	getNFTMetaData(contractAddress, tokenID, chainID)
-		.then(res => {
-			document.getElementById('fetchedNFTImage').src = res.data.items[0].nft_data[0].external_data.image_512
-			document.getElementById('fetchedTokenID').innerHTML = tokenID
-			document.getElementById('fetchedOwnedBy').innerHTML = res.data.items[0].nft_data[0].owner
-			document.getElementById('fetchedOriginalOwner').innerHTML = res.data.items[0].nft_data[0].original_owner
-			fetchedNFT.style.display = 'block'
-			console.log(res.data)
-		})
-		.catch(err => console.log(err))
-
-}
-
 async function getNFTMetaData(contractAddress, tokenID, chainID) {
 	const metaDataEndpoint = `https://api.covalenthq.com/v1/${chainID}/tokens/${contractAddress}/nft_metadata/${tokenID}/?quote-currency=USD&format=JSON&key=ckey_53d9f55e830446a3b8cedcd9ab9`
 	try {
 		const res = await axios.get(metaDataEndpoint)
+		return res.data
+	} catch (err) {
+		console.error(err)
+	}
+}
+
+async function getAdditionalNFTs(address, chainID) {
+	const otherNFTsEndpoint = `https://api.covalenthq.com/v1/${chainID}/address/${address}/balances_v2/?quote-currency=USD&format=JSON&nft=true&no-nft-fetch=false&key=ckey_53d9f55e830446a3b8cedcd9ab9`
+	try {
+		const res = await axios.get(otherNFTsEndpoint)
 		return res.data
 	} catch (err) {
 		console.error(err)
