@@ -6,6 +6,7 @@ module.exports = function (app) {
 
     // retrieve index page
     app.get("/", function (req, res) {
+        console.log("hello from within main.js")
         res.render("index.html", {
             title: "hackathon: Road to web3"
         });

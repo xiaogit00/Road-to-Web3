@@ -18,29 +18,38 @@
                 <img class="mb-2 me-2" src="/static/nft_blue.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
                 <b class="h3 text-info">Whose NFTs?</b>
             </header>
-            <!-- search input -->
-            <div class="col-md-4 ps-3">
-                <input type="text" class="form-control form-control-lg border border-dark border-3 rounded-3" id="search" placeholder="Search NFTs By Name" style="box-shadow: none;">
-            </div>
-            <!-- token id input -->
-            <div class="col-md-2 ps-3">
-                <input type="text" class="form-control form-control-lg border border-dark border-3 rounded-3" id="inputID" placeholder="Token ID" style="box-shadow: none;">
-            </div>
-            <!-- dropdown -->
-            <div class="col-md-2 ps-3">
-                <select class="form-select form-select-lg border border-dark border-3 rounded-3" aria-label="Default select example" style="box-shadow: none;">
-                    <option selected>Select a chain</option>
-                    <option value="1">Polygon</option>
-                    <option value="2">Ethereum</option>
-                    <option value="3">Avalanche</option>
-                    <option value="3">Binance Smart Chain</option>
-                    <option value="3">Moonriver</option>
-                </select>
-            </div>
-            <!-- search button -->
-            <div class="d-grid gap-2 ps-3 col-2 mx-auto">
-                <button type="submit" class="btn btn-info btn-lg rounded-3" style="box-shadow: none;">Search</button>
-            </div>
+            <!-- <form action="#" method="GET">  -->
+                <!-- search input -->
+                <div class="col-md-4 ps-3">
+                    <input type="text"
+                            class="form-control form-control-lg border border-dark border-3 rounded-3"
+                            id="search"
+                            placeholder="Search NFTs By Name"
+                            style="box-shadow: none;"
+                            name="nftAddress"
+                            value=""
+                    >
+                </div>
+                <!-- token id input -->
+                <div class="col-md-2 ps-3">
+                    <input type="text" class="form-control form-control-lg border border-dark border-3 rounded-3" id="inputID" placeholder="Token ID" style="box-shadow: none;">
+                </div>
+                <!-- dropdown -->
+                <div class="col-md-2 ps-3">
+                    <select class="form-select form-select-lg border border-dark border-3 rounded-3" aria-label="Default select example" style="box-shadow: none;">
+                        <option selected>Select a chain</option>
+                        <option value="1">Polygon</option>
+                        <option value="2">Ethereum</option>
+                        <option value="3">Avalanche</option>
+                        <option value="3">Binance Smart Chain</option>
+                        <option value="3">Moonriver</option>
+                    </select>
+                </div>
+                <!-- search button -->
+                <div class="d-grid gap-2 ps-3 col-2 mx-auto">
+                    <button type="submit" class="btn btn-info btn-lg rounded-3" style="box-shadow: none;">Search</button>
+                </div>
+            <!-- </form> -->
         </div>
     </nav>
 
@@ -106,6 +115,7 @@
             </div>
 
     <!-- scripts -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/static/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/1c9222c777.js"></script>
