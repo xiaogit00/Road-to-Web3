@@ -19,7 +19,7 @@
                 <b class="h3 text-info">Whose NFTs?</b>
             </header>
 
-            <form class="d-inline-flex">
+            <form class="d-inline-flex" id="form">
                 <!-- search input -->
                 <div class="col-md-4 ps-3">
                     <input type="text"
@@ -28,7 +28,6 @@
                             placeholder="Search NFTs By Name"
                             style="box-shadow: none;"
                             name="nftAddress"
-                            value=""
                     >
                 </div>
                 <!-- token id input -->
@@ -43,11 +42,9 @@
                 <div class="col-md-3 me-3">
                     <select class="form-select form-select-lg" aria-label="Default select example" style="box-shadow: none;">
                         <option selected>Select a chain</option>
-                        <option value="1">Polygon</option>
-                        <option value="2">Ethereum</option>
-                        <option value="3">Avalanche</option>
-                        <option value="3">Binance Smart Chain</option>
-                        <option value="3">Moonriver</option>
+                        <option value="137">Polygon</option>
+                        <option value="1">Ethereum</option>
+                        <option value="43114">Avalanche</option>
                     </select>
                 </div>
                 <!-- search button -->

@@ -23,6 +23,8 @@ search.setAttribute("onkeyup","searchDB(this);");
 let nftGlobalData = []
 let selectedNFTAddress = ''
 getNFTData()
+const form = document.getElementById('form')
+form.onsubmit = submit;
 
 async function getNFTData() {
 	const endPoints = [
@@ -43,6 +45,30 @@ async function getNFTData() {
 }
 
 
+
+function submit(event) {
+	event.preventDefault();
+	const contractAddress = event.target[0].name
+	const tokenID = event.target[1].value
+	const chainID = event.target[2].value
+	console.log(event.target[0].name) // this returns contractID
+	console.log(event.target[1].value) // this returns tokenID
+	console.log(event.target[2].value) //this returns chainID
+	getNFTMetaData(contractAddress, tokenID, chainID)
+		.then(res => console.log(res))
+		.catch(err => console.log(err))
+
+}
+
+async function getNFTMetaData(contractAddress, tokenID, chainID) {
+	const metaDataEndpoint = `https://api.covalenthq.com/v1/${chainID}/tokens/${contractAddress}/nft_metadata/${tokenID}/?quote-currency=USD&format=JSON&key=ckey_53d9f55e830446a3b8cedcd9ab9`
+	try {
+		const res = await axios.get(metaDataEndpoint)
+		return res.data
+	} catch (err) {
+		console.error(err)
+	}
+}
 // Search & dropdown function
 function searchDB(elem) {
 	console.log("hello from within search function of  app.js")
