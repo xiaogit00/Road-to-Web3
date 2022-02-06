@@ -22,4 +22,5 @@ module.exports = function (app) {
     app.get("/api/nft-polygon", function (req, res) {
         res.send(nftPolygon)
     })
+
 }
