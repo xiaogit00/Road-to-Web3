@@ -38,9 +38,14 @@ function submit(event) {
 	console.log(event.target[0].name) // this returns contractID
 	console.log(event.target[1].value) // this returns tokenID
 	console.log(event.target[2].value) //this returns chainID
-
+	let existingCards = document.getElementById('cardRow')
+	if (existingCards !== null) {
+		existingCards.innerHTML = ''
+	}
+	//Fetching NFT data of main component
 	getNFTMetaData(contractAddress, tokenID, chainID)
 		.then(res => {
+			//After a successful fetch, fill in div attributes + make visible
 			document.getElementById('fetchedNFTImage').src = res.data.items[0].nft_data[0].external_data.image_512
 			document.getElementById('fetchedTokenID').innerHTML = tokenID
 			const nftOwnerAddress = res.data.items[0].nft_data[0].owner
@@ -52,6 +57,7 @@ function submit(event) {
 			//Gets additional NFT info of owner
 		})
 		.then(nftOwnerAddress => {
+			//with Owner Address, find more of his NFTs
 			getAdditionalNFTs(nftOwnerAddress, chainID)
 				.then(res => {
 					const nftItems = res.data.items.filter(x => x.type === 'nft')
@@ -64,6 +70,7 @@ function submit(event) {
 
 					//APPENDING THEM TO RIGHT PLACES
 					nftItems.map(nftItem => {
+						//excluding same NFT
 						//creating cards
 						let card = document.createElement('div')
 						card.id = 'carouselCard'

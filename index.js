@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require('cors')
 const axios = require("axios")
 const bodyParser = require("body-parser");
 const app = express();
 const port = 8080;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
 
 require("./routes/main")(app);
 app.use('/static', express.static('./static/'));
