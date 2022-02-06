@@ -45,7 +45,7 @@ async function getNFTData() {
 
 // Search & dropdown function
 function searchDB(elem) {
-	console.log("hello from within search function of  app.js")
+	console.log("hello from within search function of app.js")
 	let selector = document.getElementById("selector");
 	// Check if input is empty
 	if (elem.value.trim() !== "") {
