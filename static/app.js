@@ -4,6 +4,7 @@
 //**********************************************
 //Define Search NFT by name as a DOM object 'search'
 let search = document.getElementById("searchNFT");
+search.disabled = true;
 
 //Define array placeholder to put all NFT data from API
 let nftGlobalData = []
@@ -116,15 +117,25 @@ function submit(event) {
 //**********************************************
 
 async function getNFTData() {
+	// const endPoints = [
+	// 	'http://localhost:8080/api/nft-eth',
+	// 	'http://localhost:8080/api/nft-avax',
+	// 	'http://localhost:8080/api/nft-polygon'
+	// ]
 	const endPoints = [
-		'http://localhost:8080/api/nft-eth',
-		'http://localhost:8080/api/nft-avax',
-		'http://localhost:8080/api/nft-polygon'
+		'https://api.covalenthq.com/v1/1/nft_market/?key=ckey_53d9f55e830446a3b8cedcd9ab9',
+		'https://api.covalenthq.com/v1/43114/nft_market/?key=ckey_53d9f55e830446a3b8cedcd9ab9',
+		'https://api.covalenthq.com/v1/137/nft_market/?key=ckey_53d9f55e830446a3b8cedcd9ab9'
 	]
 	for (let i = 0; i < endPoints.length; i++) {
 		try {
 			const res = await axios.get(endPoints[i])
 			nftGlobalData.push(res.data)
+			if (nftGlobalData.length === 3) {
+				document.getElementById('loadSpinner').style.display = 'none'
+				document.getElementById('loadtext').style.display = 'none'
+				search.disabled = false;
+			}
 		} catch (err) {
 			console.error(err)
 		}
