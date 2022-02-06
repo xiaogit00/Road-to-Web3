@@ -1,6 +1,6 @@
 html, body {
   margin: 0;
-  padding: 0; 
+  padding: 0;
   height: 100%;
   width: 100%;
 }
@@ -43,7 +43,7 @@ input#search.dropdown {
   appearance: none;
   outline: none;
   font-size: 20px;
-  padding: 10px 20px; 
+  padding: 10px 20px;
   cursor: pointer;
   border: none;
   display: block;
@@ -81,6 +81,13 @@ input#search.dropdown {
   flex-shrink: 0;
 }
 
+#fetchedNFT {
+    display: none;
+}
+
+#fetchedAdditionalNFT {
+    display: none;
+}
 /* .x-card > img {
   margin-bottom: .75rem;
   width: 100%;

@@ -1,30 +1,40 @@
 
-const db = {
-	"03067":["Bake Rolls 100g","snack"],
-	"04089":["Potato Chips 70g","snack"],
-	"05612":["Ice Coffee 100ml","drink"],
-	"07740":["Sparkling Water 1.5l","drink"]
-}
-
-console.log("hello from within app.js")
-
-// Create input element - via the input tag name
-// let search = document.createElement("input");
-
+//**********************************************
+//*             Declarations On Page Load
+//**********************************************
+//Define Search NFT by name as a DOM object 'search'
 let search = document.getElementById("searchNFT");
+
+//Define array placeholder to put all NFT data from API
+let nftGlobalData = []
+
 // window.search = search; // Put the element in window so we can access it easily later
 // search.id = "search"; // This is for the CSS
 search.autocomplete = "off"; // Disable browser autocomplete
 search.setAttribute("onkeyup","searchDB(this);");
-// window.onload = function() {
-// 	document.body.appendChild(search);
-// }
 
-let nftGlobalData = []
-let selectedNFTAddress = ''
+//HIDES BOTH DISPLAY
+const fetchedNFT = document.getElementById("fetchedNFT");
+const fetchedAdditionalNFT = document.getElementById("fetchedAdditionalNFT");
+
+
+//**********************************************
+//*             API calls
+//**********************************************
+// Call Async function to fetch all API data
 getNFTData()
+
+//**********************************************
+//*             Event Handlers
+//**********************************************
 const form = document.getElementById('form')
 form.onsubmit = submit;
+
+
+
+//**********************************************
+//*             Function Definitions
+//**********************************************
 
 async function getNFTData() {
 	const endPoints = [
@@ -55,7 +65,14 @@ function submit(event) {
 	console.log(event.target[1].value) // this returns tokenID
 	console.log(event.target[2].value) //this returns chainID
 	getNFTMetaData(contractAddress, tokenID, chainID)
-		.then(res => console.log(res))
+		.then(res => {
+			document.getElementById('fetchedNFTImage').src = res.data.items[0].nft_data[0].external_data.image_512
+			document.getElementById('fetchedTokenID').innerHTML = tokenID
+			document.getElementById('fetchedOwnedBy').innerHTML = res.data.items[0].nft_data[0].owner
+			document.getElementById('fetchedOriginalOwner').innerHTML = res.data.items[0].nft_data[0].original_owner
+			fetchedNFT.style.display = 'block'
+			console.log(res.data)
+		})
 		.catch(err => console.log(err))
 
 }
