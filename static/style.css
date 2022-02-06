@@ -52,11 +52,9 @@ input#searchNFT.dropdown {
   background-color: #ffffff;
   margin: 0;
   border-radius: 5px;
-  /* background-color: transparent; */
   border-width: 0;
   width: 100%;
   text-align: left;
-  /* z-index: -1; */
 }
 
 #selector button:hover {
