@@ -12,14 +12,14 @@
 
 <body>
     <!-- navbar -->
-    <form action="#" method="GET">
     <nav class="navbar navbar-light bg-dark mb-5">
-        <div class="container-fluid">
+        <div class="container ms-5">
             <header class="navbar-bar pt-2">
                 <img class="mb-2 me-2" src="/static/nft_blue.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
                 <b class="h3 text-info">Whose NFTs?</b>
             </header>
 
+            <form class="d-inline-flex">
                 <!-- search input -->
                 <div class="col-md-4 ps-3">
                     <input type="text"
@@ -40,8 +40,8 @@
                             style="box-shadow: none;">
                 </div>
                 <!-- dropdown -->
-                <div class="col-md-2 ps-3">
-                    <select class="form-select form-select-lg border border-dark border-3 rounded-3" aria-label="Default select example" style="box-shadow: none;">
+                <div class="col-md-3 me-3">
+                    <select class="form-select form-select-lg" aria-label="Default select example" style="box-shadow: none;">
                         <option selected>Select a chain</option>
                         <option value="1">Polygon</option>
                         <option value="2">Ethereum</option>
@@ -51,13 +51,12 @@
                     </select>
                 </div>
                 <!-- search button -->
-                <div class="d-grid gap-2 ps-3 col-2 mx-auto">
-                    <button type="submit" class="btn btn-info btn-lg rounded-3" style="box-shadow: none;">Search</button>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-info btn-lg d-grid gap-2" style="box-shadow: none;  width: 180px;">Search</button>
                 </div>
-
+            </form>
         </div>
     </nav>
-</form>
 
     <!-- display section -->
     <main class="card x-1 py-5 mx-auto" style="max-width: 50rem;">
