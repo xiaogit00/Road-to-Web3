@@ -5,7 +5,7 @@ html, body {
   width: 100%;
 }
 
-input#search {
+input#searchNFT {
   /* -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -22,7 +22,7 @@ input#search {
   /* transform: translate(-50%, -25%); */
 }
 
-input#search.dropdown {
+input#searchNFT.dropdown {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -88,6 +88,7 @@ input#search.dropdown {
 #fetchedAdditionalNFT {
     display: none;
 }
+
 /* .x-card > img {
   margin-bottom: .75rem;
   width: 100%;
