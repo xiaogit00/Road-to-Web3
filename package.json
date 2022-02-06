@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/athiyenarivalagan/Road-to-Web3/issues"
   },
-  "homepage": "https://github.com/athiyenarivalagan/Road-to-Web3#readme",
+  "homepage": "https://athiyenarivalagan.github.io/Road-to-Web3/",
   "devDependencies": {
     "nodemon": "^2.0.15"
   }
