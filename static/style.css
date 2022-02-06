@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -35,6 +36,7 @@ input#searchNFT.dropdown {
   margin-top: 2px;
   max-height: 150px;
   overflow: auto;
+  z-index: 1;
 }
 
 #selector button {
@@ -50,7 +52,6 @@ input#searchNFT.dropdown {
   background-color: #ffffff;
   margin: 0;
   border-radius: 5px;
-  background-color: transparent;
   border-width: 0;
   width: 100%;
   text-align: left;
@@ -61,7 +62,7 @@ input#searchNFT.dropdown {
 }
 
 /* horizontal slider */
-#cardRow{
+#cardRow {
   align-items: stretch;
   display: flex;
   flex-direction: row;
@@ -73,7 +74,7 @@ input#searchNFT.dropdown {
 #carouselCard {
   /*float: left;*/
   max-width: 33.333%;
-  padding: .75rem;
+  padding: 0.75rem;
   margin-bottom: 2rem;
   border: 0;
   flex-basis: 33.333%;
@@ -82,11 +83,11 @@ input#searchNFT.dropdown {
 }
 
 #fetchedNFT {
-    display: none;
+  display: none;
 }
 
 #fetchedAdditionalNFT {
-    display: none;
+  display: none;
 }
 
 /* .x-card > img {
